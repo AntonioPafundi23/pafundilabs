@@ -1,0 +1,12 @@
+{
+  "name": "pafundilabs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pafundi Labs — independent technology advisory website",
+  "type": "module",
+  "scripts": {
+    "dev": "node tools/serve.mjs",
+    "deploy": "npx wrangler deploy"
+  },
+  "engines": { "node": ">=22" }
+}

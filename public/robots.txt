@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pafundilabs.com/sitemap.xml

@@ -1,0 +1,8 @@
+{
+  "name": "pafundilabs",
+  "compatibility_date": "2026-10-16",
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "404-page"
+  }
+}
