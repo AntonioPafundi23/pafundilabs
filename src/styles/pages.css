@@ -1,0 +1,87 @@
+.hero { display: grid; grid-template-columns: 1.2fr .9fr; align-items: center; gap: 66px; padding-block: 76px 80px; }
+.hero .eyebrow { display: flex; align-items: center; gap: 10px; font-size: 9px; }
+.status-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+.hero h1 { font-size: clamp(50px, 5.3vw, 76px); }
+.hero .lead { font-size: 22px; margin-bottom: 18px; }
+.hero-detail { max-width: 490px; color: var(--muted); font-size: 15px; margin-bottom: 30px; }
+.hero-founder { font-size: 12px; margin: 32px 0 0; }
+.hero-founder a { border-bottom: 1px solid var(--line); padding-block: 7px; }
+.hero-founder a:hover { color: var(--accent); }
+.approach-panel { background: var(--ink); color: var(--paper); padding: 30px 34px; position: relative; }
+.panel-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 32px; }
+.panel-heading .eyebrow { color: var(--inverse-muted); margin: 0; font-size: 8px; }
+.panel-monogram { font: italic 45px/.8 var(--serif); color: #bdcdb2; letter-spacing: -4px; }
+.panel-statement { font: 32px/1.2 var(--serif); letter-spacing: -.03em; margin-bottom: 30px; }
+.approach-list { padding: 0; margin: 0 0 16px; list-style: none; }
+.approach-list li { display: grid; grid-template-columns: 26px 1fr; gap: 16px; border-top: 1px solid #40524a; padding-block: 17px; }
+.approach-list li > span { color: #b6c8ad; font-size: 10px; padding-top: 5px; }
+.approach-list h2 { font: 21px/1.2 var(--serif); letter-spacing: -.02em; margin-bottom: 7px; }
+.approach-list p { color: var(--inverse-muted); font-size: 12px; line-height: 1.6; margin: 0; }
+.approach-panel .text-link { color: var(--inverse-muted); font-size: 11px; }
+.founder-section { display: grid; grid-template-columns: .85fr 1.15fr; align-items: center; gap: 84px; }
+.founder-section > div > p:not(.eyebrow):not(.lead) { color: var(--muted); font-size: 15px; }
+.founder-section .actions { gap: 16px 28px; margin-top: 28px; }
+.page-intro { padding-block: 72px 64px; }
+.page-intro h1 { max-width: 1000px; }
+.page-intro .lead { max-width: 770px; color: var(--muted); margin-bottom: 0; }
+.page-intro--offer { padding-block: 48px 28px; }
+.page-intro--offer .lead { max-width: 640px; }
+.offer-section { padding-bottom: var(--section-space); }
+.offer-section-label { margin-bottom: 22px; }
+.offer-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.offer-card .offer-question { font-family: var(--serif); font-size: 18px; color: var(--ink); margin-bottom: 14px; }
+.offer-card .label { margin: 8px 0 14px; }
+.offer-card .arrow-list { margin-bottom: 24px; }
+.offer-card:nth-child(even) { background: #eff1e9; }
+.offer-card:nth-child(odd) { background: var(--paper); }
+.steps--four { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; }
+.booking-panel { border-top: 1px solid var(--line); margin-top: 28px; padding-top: 28px; }
+.booking-panel h3 { font-size: 28px; margin-bottom: 14px; }
+.booking-panel > p:not(.eyebrow) { color: var(--muted); font-size: 14px; }
+.booking-panel .actions { margin-top: 22px; gap: 18px 28px; }
+.engagement-grid--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.service-detail { display: grid; grid-template-columns: .85fr 1.15fr; gap: 80px; border-top: 1px solid var(--line); padding-block: 50px 48px; scroll-margin-top: 32px; }
+.service-detail h2 { font-size: 38px; max-width: 390px; }
+.service-detail .lead { color: var(--muted); }
+.service-detail .label { margin: 30px 0 18px; }
+.service-enquiry { margin-top: 26px; }
+.service-enquiry > p { color: var(--muted); font-size: 12px; margin-bottom: 4px; }
+.engagement-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.engagement-card { display: flex; flex-direction: column; align-items: flex-start; padding: 32px; border: 1px solid #c7cec0; }
+.engagement-card h3 { max-width: 380px; font-size: 32px; margin-bottom: 20px; }
+.engagement-card > p:not(.eyebrow) { color: var(--muted); font-size: 15px; }
+.engagement-card .text-link { margin-top: auto; }
+.service-detail .arrow-list { margin-bottom: 24px; }
+.outcome { color: var(--accent); font-family: var(--serif); font-size: 21px; margin-bottom: 0; }
+.service-details { padding-bottom: 24px; }
+.example-engagement { border-top: 1px solid var(--line); }
+.example-next { max-width: 760px; color: var(--muted); font-size: 13px; margin: 32px 0 0; }
+.split-section { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; }
+.split-section > div > p:not(.eyebrow):not(.lead) { color: var(--muted); font-size: 15px; }
+.question-list article { border-top: 1px solid #c9d0c1; padding-block: 22px; }
+.question-list article:last-child { padding-bottom: 0; }
+.question-list h3 { font-size: 25px; margin-bottom: 12px; }
+.question-list p { color: var(--muted); font-size: 14px; margin: 0; }
+.split-section .scope-note { font-size: 12px !important; margin-top: 24px; }
+.about-profile { padding-block: 8px 20px; align-items: start; }
+.about-profile > div { padding-top: 20px; }
+.about-profile h2 { font-size: 39px; }
+.contact-page { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: start; }
+.contact-card { background: var(--ink); color: var(--paper); padding: 40px; }
+.contact-card > p:not(.eyebrow) { color: var(--inverse-muted); font-size: 14px; }
+.contact-card h2 { font-size: 39px; }
+.contact-card .eyebrow { color: var(--inverse-muted); }
+.contact-email { display: inline-block; font: 27px/1.5 var(--serif); letter-spacing: -.03em; border-bottom: 1px solid #829485; margin-top: 12px; overflow-wrap: anywhere; }
+.contact-email span { font-family: var(--sans); font-size: 16px; margin-left: 6px; }
+.contact-card .email-help { font-size: 11px !important; margin-top: 16px; max-width: 350px; }
+.contact-card .text-link { margin-top: 14px; }
+.contact-card .text-link:hover { color: white; }
+.contact-guidance { padding-top: 8px; }
+.contact-prompts { list-style: none; margin: 0; padding: 0; counter-reset: prompts; }
+.contact-prompts li { border-top: 1px solid var(--line); padding: 18px 0 20px 30px; position: relative; counter-increment: prompts; }
+.contact-prompts li::before { content: '0' counter(prompts); position: absolute; left: 0; top: 22px; font-size: 10px; color: var(--accent); }
+.contact-prompts h3 { font-size: 23px; margin-bottom: 8px; }
+.contact-prompts p { font-size: 14px; color: var(--muted); margin: 0; }
+.fit-note { border-top: 1px solid var(--line); padding-top: 22px; }
+.fit-note h3 { font-size: 23px; margin-bottom: 10px; }
+.fit-note p { color: var(--muted); font-size: 13px; margin-bottom: 0; }

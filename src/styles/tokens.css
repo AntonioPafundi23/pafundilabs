@@ -1,0 +1,14 @@
+:root {
+  --paper: #f5f4ee;
+  --surface: #eeefe7;
+  --surface-green: #e7ebe2;
+  --ink: #1a2b2b;
+  --muted: #596460;
+  --accent: #426655;
+  --line: #d4d8cd;
+  --inverse-muted: #c4d0c5;
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --wrap: 1240px;
+  --section-space: clamp(64px, 7vw, 108px);
+}

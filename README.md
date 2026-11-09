@@ -1,43 +1,67 @@
 # Pafundi Labs
 
-A small, static website for Antonio Pafundi’s independent technology advisory work. This directory is its own Git repository; the parent consulting workspace is separate.
+A six-page, founder-led technology consultancy website. This folder is its own Git repository; the parent consulting workspace is separate.
 
-## Preview
+The site ships plain HTML and CSS, with no browser JavaScript, runtime framework, third-party fonts or package dependencies. A small Node.js build composes shared components and content into static pages.
 
-Requires Node.js 22 or newer. No dependency install or build is needed.
+## Run locally
+
+Requires Node.js 22 or newer. No install is needed.
 
 ```sh
 npm run dev
 ```
 
-Open http://127.0.0.1:4173. All deployable files live in `public/`.
+Open http://127.0.0.1:4173/. The dev server builds once and watches `src/`; after an edit, refresh the browser. Stop any older preview server and restart to enable the source watcher. Alternatively use `PORT=4174 npm run dev`.
 
-You can also run `node tools/serve.mjs` directly.
+## Structure and editing
 
-## Deploy to your own Cloudflare account
+```text
+src/
+  content/site.mjs       Brand, contact details, pricing, services, review data
+  components/layout.mjs Shared HTML head, navigation and footer
+  components/ui.mjs     Shared buttons, cards, sections and portrait
+  pages/                Home, Services, Financial services, For founders (/review), About, Contact, 404
+  styles/               Tokens, base, components, pages, responsive rules
+tools/
+  build.mjs             Generate static HTML, CSS and sitemap
+  check.mjs             Build and validate pages, links, assets and metadata
+  serve.mjs             Local static server and source watcher
+public/                 Deployable output, plus maintained assets and PDFs
+```
 
-This project uses Cloudflare Workers Static Assets. There is no Worker code, backend, CMS, tracking or form service.
+Edit `src/`, then build; HTML and `styles.css` in `public/` are generated. The build preserves maintained PDFs, images, headers and other assets. Generated output is tracked so it can also be uploaded directly to static hosting.
+
+Change review pricing in `src/content/site.mjs`. PDFs are separate maintained documents: update both `public/reviews/` files if the price or scope changes. Their current fee is US$2,500. Workspace originals live outside this repository in the parent consulting folder.
+
+To add a page, create its module in `src/pages/`, register it in `tools/build.mjs`, and add navigation in `src/content/site.mjs` if appropriate. The layout supplies metadata and active navigation; the sitemap comes from public page routes. Update the check's expected page count when adding a page.
+
+## Build and checks
+
+```sh
+npm run build
+npm run check
+```
+
+Checks cover local links and anchors, asset existence, duplicate IDs, one primary heading per page, unique titles, canonical URLs, active navigation, stale pricing and sitemap entries. They complement browser checks for responsive layout, keyboard navigation and content quality.
+
+Mobile navigation keeps all destinations visible without a JavaScript menu. Contact has a visible email address, a mailto link and a LinkedIn alternative; there is no form backend. Old homepage anchors `#reviews`, `#about` and `#contact` still exist. The founder offers page lives at `/review/`; set `site.bookingUrl` in `src/content/site.mjs` to a Calendly link when ready.
+
+## Deploy
+
+Released to https://pafundilabs.com on 17 October 2026. Cloudflare version: `4cdc4e69-a3ae-4b72-a215-f8792d541491`. All five pages, both PDF downloads, sitemap and custom 404 were checked on the public domain after deployment.
+
+Cloudflare Workers Static Assets serves `public/`. The existing Worker is `pafundilabs`; custom domains stay configured in Cloudflare.
 
 ```sh
 npx wrangler login
 npm run deploy
 ```
 
-The included `wrangler.jsonc` uploads only `public/`. First deploy to the generated workers.dev address, then add `pafundilabs.com` as a Custom Domain in the deployed Worker’s Settings → Domains & Routes. The domain needs to be active in the same Cloudflare account. Add `www.pafundilabs.com` if desired and configure a redirect to the apex in Cloudflare. No DNS or email routing is changed by this repository.
+The deploy script checks the site first. Wrangler also runs the build when invoked directly. For Git integration, use `npm run check` as the build command and `npx wrangler deploy` as the deploy command. For other static hosts, build and upload `public/`; no server runtime is needed.
 
-For Cloudflare Git integration, connect this repository, leave the build command empty, and use `npx wrangler deploy` as the deploy command. Alternatively, `public/` can be uploaded as a static Cloudflare Pages site with no build step.
+Keep credentials out of the repository. Deployment does not change DNS, email forwarding or outbound mail. The `_headers` policy permits local styles and images and disables browser scripts, external connections and form submissions.
 
-Official references: [Static Assets](https://developers.cloudflare.com/workers/static-assets/) and [Custom Domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).
+## Content boundaries
 
-## Content and assets
-
-- `public/index.html`: all page copy, links, contact address and metadata.
-- `public/styles.css`: responsive styles; system fonts, no external font requests.
-- `public/assets/antonio-*.webp`: optimised versions of the supplied portrait.
-- `public/reviews/`: the two supplied, unchanged service PDFs. These originals still list the existing Gmail contact where present; the website uses `antonio@pafundilabs.com`.
-- `public/_headers`: Cloudflare response headers.
-- `public/404.html`, `robots.txt`, `sitemap.xml`: basic site housekeeping.
-
-The contact link opens the visitor’s email application. Set up `antonio@pafundilabs.com` forwarding before going live. Outbound Gmail/Resend configuration is separate from this website. Never add mail or Cloudflare credentials to the repository.
-
-The page uses the supplied experience and service descriptions, without testimonials or client endorsements. Copyright year is static in the footer.
+Pafundi Labs is founder-led, with Antonio directly involved. Engagement examples are illustrative service types, not completed case studies. Finance remains a dedicated area of expertise without excluding other sectors. Experience claims come from Antonio's supplied background; there are no invented testimonials, clients or team members.

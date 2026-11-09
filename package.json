@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "dev": "node tools/serve.mjs",
-    "deploy": "npx wrangler deploy"
+    "build": "node tools/build.mjs",
+    "check": "node tools/check.mjs",
+    "deploy": "npm run check && npx wrangler deploy"
   },
   "engines": { "node": ">=22" }
 }
