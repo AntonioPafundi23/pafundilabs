@@ -25,7 +25,7 @@ export default {
   render: () => `<section class="wrap page-intro page-intro--offer">
       <p class="eyebrow">For business founders</p>
       <h1>Independent advice before<br><em>expensive decisions.</em></h1>
-      <p class="lead">Make informed product and technology decisions before committing to development, scaling or fundraising. Work directly with Antonio Pafundi on an independent assessment and a clear way forward.</p>
+      <p class="lead">Make informed product and technology decisions before committing to development, scaling or fundraising. Work directly with Antonio Pafundi on an independent assessment and a written plan for your next steps.</p>
       <div class="actions">${textLink('Explore services', '#offers')}</div>
     </section>
     <div class="credibility-compact">${credibility(founderCredibility)}</div>
