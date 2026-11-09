@@ -45,7 +45,7 @@ npm run check
 
 Checks cover local links and anchors, asset existence, duplicate IDs, one primary heading per page, unique titles, canonical URLs, active navigation, stale pricing and sitemap entries. They complement browser checks for responsive layout, keyboard navigation and content quality.
 
-Mobile navigation keeps all destinations visible without a JavaScript menu. Contact has a visible email address, a mailto link and a LinkedIn alternative; there is no form backend. Old homepage anchors `#reviews`, `#about` and `#contact` still exist. The founder offers page lives at `/review/`; set `site.bookingUrl` in `src/content/site.mjs` to a Calendly link when ready.
+Mobile navigation keeps all destinations visible without a JavaScript menu. Contact has a visible email address, a mailto link and a LinkedIn alternative; there is no form backend. Old homepage anchors `#reviews`, `#about` and `#contact` still exist. The founder offers page lives at `/review/`; booking CTAs use `site.bookingUrl` (Cal.com) and prefill `Which-service-are-you-interested-in` from each offer’s `calService` value.
 
 ## Deploy
 

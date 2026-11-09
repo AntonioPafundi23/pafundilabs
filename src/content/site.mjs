@@ -5,8 +5,8 @@ export const site = {
   linkedin: 'https://www.linkedin.com/in/antonio-pafundi-143732100/',
   fee: 'US$2,500',
   duration: '3 business days',
-  // Swap to a Calendly URL once the booking page is live.
-  bookingUrl: '/contact/',
+  bookingUrl: 'https://cal.com/antonio-pafundi/pafundi-labs',
+  bookingServiceParam: 'Which-service-are-you-interested-in',
   navigation: [
     { href: '/services/', label: 'Services' },
     { href: '/financial-services/', label: 'Financial services' },
@@ -59,9 +59,12 @@ export const reviews = [
 
 export const founderOffers = [
   {
-    id: 'launch-blueprint',
+    id: 'product-strategy',
+    aliases: ['launch-blueprint'],
     number: '01',
     title: 'Product Strategy & Launch Blueprint',
+    // Must match the Cal.com select option value exactly.
+    calService: 'Product Strategy & Launch Blueprint',
     question: 'Is this worth building, what should the first version do, and how should I approach it?',
     description: 'For founders with an idea or early prototype who need to decide what to build, buy or leave out before commissioning development.',
     deliverables: [
@@ -74,9 +77,11 @@ export const founderOffers = [
     timing: 'Within 10 business days',
   },
   {
-    id: 'scaling-assessment',
+    id: 'scaling',
+    aliases: ['scaling-assessment'],
     number: '02',
     title: 'Product & Technology Scaling Assessment',
+    calService: 'Product & Technology Scaling Assessment',
     question: 'Can my existing product support the next stage of the business?',
     description: 'For companies with a working product preparing for more customers, deployments, integrations or operational load.',
     deliverables: [
@@ -90,8 +95,10 @@ export const founderOffers = [
   },
   {
     id: 'investment-readiness',
+    aliases: [],
     number: '03',
     title: 'Investment Readiness Assessment',
+    calService: 'Investment Readiness Assessment',
     question: 'Is my product and technology strategy ready for investor scrutiny?',
     description: 'For startups approaching a funding round who want an independent view of technical credibility, risks and the engineering roadmap.',
     deliverables: [
@@ -104,9 +111,11 @@ export const founderOffers = [
     timing: 'Within 10 business days',
   },
   {
-    id: 'strategic-advisory',
+    id: 'custom',
+    aliases: ['strategic-advisory'],
     number: '04',
     title: 'Strategic Product & Technology Advisory',
+    calService: 'Custom Product & Technology Advisory',
     question: 'I have a specific decision to make. What are my options?',
     description: 'For a focused engineering or product decision that does not fit a standard package. Scope and fee are agreed before work starts.',
     deliverables: [
@@ -117,38 +126,44 @@ export const founderOffers = [
     ],
     price: 'Quoted individually',
     timing: 'Agreed with scope',
+    secondary: true,
   },
 ];
+
+/** Cal.com booking URL, optionally prefilling the service select. */
+export function bookingLink(service = 'Not sure yet') {
+  const url = new URL(site.bookingUrl);
+  url.searchParams.set(site.bookingServiceParam, service);
+  return url.toString();
+}
 
 export const founderProcess = [
   {
     number: '01',
-    title: 'Kickoff',
-    text: 'A 45-minute call to confirm objectives, constraints, materials and system access.',
+    title: 'Introductory conversation',
+    text: 'A complimentary 15-minute call with Antonio to discuss objectives, identify the relevant service and confirm the proposed scope.',
   },
   {
     number: '02',
-    title: 'Assessment',
-    text: 'Independent review of the agreed product, systems, decisions and commercial context.',
+    title: 'Confirm the engagement',
+    text: 'Agree the deliverables, fixed price and terms before work begins.',
   },
   {
     number: '03',
-    title: 'Report',
-    text: 'Written findings, tangible recommendations and a practical sequence of next steps.',
+    title: 'Kickoff and assessment',
+    text: 'A 45-minute working session to establish context, followed by independent product and technology analysis.',
   },
   {
     number: '04',
-    title: 'Walkthrough',
-    text: 'A 60-minute session to explain the conclusions and answer questions.',
+    title: 'Report and walkthrough',
+    text: 'The written assessment, then a dedicated 60-minute session to discuss the conclusions and answer questions.',
   },
 ];
 
-export const founderExclusions = [
-  'Full security audits, penetration tests or compliance certifications',
-  'Exhaustive line-by-line code audits',
-  'Hands-on implementation, development or ongoing retainer work',
-  'Claims of product-market fit without customer evidence',
-  'Regulatory, legal or investment advice',
+export const founderCredibility = [
+  { title: 'Barclays Rates', detail: 'VP Engineering' },
+  { title: 'Man Group', detail: 'Trading technology experience' },
+  { title: 'Production Systems', detail: 'Architecture, engineering leadership and technology modernisation' },
 ];
 
 export const sectors = [

@@ -146,21 +146,39 @@ small { font-size: .8em; }
 .page-intro { padding-block: 72px 64px; }
 .page-intro h1 { max-width: 1000px; }
 .page-intro .lead { max-width: 770px; color: var(--muted); margin-bottom: 0; }
-.page-intro--offer { padding-block: 48px 28px; }
-.page-intro--offer .lead { max-width: 640px; }
-.offer-section { padding-bottom: var(--section-space); }
-.offer-section-label { margin-bottom: 22px; }
-.offer-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-.offer-card .offer-question { font-family: var(--serif); font-size: 18px; color: var(--ink); margin-bottom: 14px; }
-.offer-card .label { margin: 8px 0 14px; }
-.offer-card .arrow-list { margin-bottom: 24px; }
-.offer-card:nth-child(even) { background: #eff1e9; }
+.page-intro--offer { padding-block: 36px 20px; }
+.page-intro--offer .eyebrow { margin-bottom: 18px; }
+.page-intro--offer h1 { margin-bottom: 18px; font-size: clamp(42px, 4.6vw, 64px); }
+.page-intro--offer .lead { max-width: 680px; font-size: clamp(17px, 1.45vw, 20px); margin-bottom: 18px; }
+.page-intro--offer .actions { margin-top: 0; }
+.credibility-compact .credibility { padding-block: 16px 18px; }
+.credibility-compact .credibility > .eyebrow { margin-bottom: 12px; }
+.offer-section { padding-top: 40px; padding-bottom: 40px; scroll-margin-top: 32px; }
+.offer-section-label { margin-bottom: 18px; }
+.offer-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.offer-card { padding: 26px; position: relative; scroll-margin-top: 32px; }
+.offer-card .anchor-alias { position: absolute; top: 0; left: 0; width: 1px; height: 1px; scroll-margin-top: 32px; }
+.offer-card > .index { display: block; margin-bottom: 16px; }
+.offer-card h3 { margin-bottom: 12px; font-size: clamp(26px, 2.3vw, 32px); }
+.offer-card .offer-question { font-family: var(--serif); font-size: 17px; color: var(--ink); margin-bottom: 10px; }
+.offer-card .label { margin: 4px 0 10px; }
+.offer-card .arrow-list { margin: 0 0 16px; }
+.offer-card .arrow-list li { margin-bottom: 8px; }
+.offer-card .review-bottom { padding-top: 8px; }
+.offer-card .price { font-size: 28px; margin-bottom: 16px; }
 .offer-card:nth-child(odd) { background: var(--paper); }
+.offer-card:nth-child(even) { background: #eff1e9; }
+.offer-card--secondary { background: transparent; border-style: dashed; border-color: #c7cec0; opacity: .92; }
+.offer-card--secondary .button { background: transparent; color: var(--ink); }
+.offer-card--secondary .button:hover { background: var(--accent); color: white; }
 .steps--four { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; }
-.booking-panel { border-top: 1px solid var(--line); margin-top: 28px; padding-top: 28px; }
-.booking-panel h3 { font-size: 28px; margin-bottom: 14px; }
-.booking-panel > p:not(.eyebrow) { color: var(--muted); font-size: 14px; }
-.booking-panel .actions { margin-top: 22px; gap: 18px 28px; }
+.founder-booking { display: grid; grid-template-columns: 1.35fr .85fr; gap: 72px; align-items: start; border-top: 1px solid var(--line); padding-block: 48px; }
+.founder-booking h2 { font-size: clamp(34px, 3.2vw, 46px); }
+.founder-booking-copy > p:not(.eyebrow):not(.confidentiality-note) { color: var(--muted); font-size: 15px; max-width: 540px; }
+.founder-booking-copy .actions { margin-top: 28px; gap: 18px 28px; }
+.confidentiality-note { margin: 22px 0 0; font-size: 12px; color: var(--muted); }
+.founder-booking-proof { padding-top: 8px; }
+.founder-booking-proof .arrow-list { margin: 0 0 20px; }
 .engagement-grid--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .service-detail { display: grid; grid-template-columns: .85fr 1.15fr; gap: 80px; border-top: 1px solid var(--line); padding-block: 50px 48px; scroll-margin-top: 32px; }
 .service-detail h2 { font-size: 38px; max-width: 390px; }
@@ -215,6 +233,7 @@ small { font-size: .8em; }
   .offer-grid { gap: 20px; }
   .steps--four { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
   .engagement-grid--three { grid-template-columns: 1fr; gap: 22px; }
+  .founder-booking { gap: 48px; }
   .hero { gap: 36px; padding-block: 58px; }
   .hero h1 { font-size: 58px; }
   .hero .lead { font-size: 20px; }
@@ -254,7 +273,17 @@ small { font-size: .8em; }
   .service-grid, .review-grid, .offer-grid, .steps, .steps--four { grid-template-columns: 1fr; gap: 30px; }
   .engagement-grid, .engagement-grid--three { grid-template-columns: 1fr; gap: 22px; }
   .offer-card .offer-question { font-size: 17px; }
-  .booking-panel { margin-top: 22px; padding-top: 22px; }
+  .page-intro--offer { padding-block: 22px 10px; }
+  .page-intro--offer .eyebrow { margin-bottom: 14px; }
+  .page-intro--offer h1 { margin-bottom: 12px; font-size: clamp(36px, 8.5vw, 48px); }
+  .page-intro--offer .lead { font-size: 16px; line-height: 1.5; }
+  .credibility-compact .credibility { padding-block: 12px; }
+  .credibility-compact .credibility > .eyebrow { margin-bottom: 8px; }
+  .credibility-compact .credibility > div { gap: 8px; }
+  .credibility-compact .credibility > div > span { font-size: 12px; gap: 8px; }
+  .offer-section { padding-top: 28px; padding-bottom: 32px; }
+  .offer-section-label { margin-bottom: 12px; }
+  .founder-booking { grid-template-columns: 1fr; gap: 34px; padding-block: 36px; }
   .engagement-card { padding: 26px; }
   .service-card .index { margin-bottom: 18px; }
   .service-card h3 { font-size: 28px; }

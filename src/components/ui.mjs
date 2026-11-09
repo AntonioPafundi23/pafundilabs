@@ -38,14 +38,24 @@ export function reviewCards() {
     </article>`).join('')}</div>`;
 }
 
-export function contactBand({ title = 'What are you trying to solve?', text = 'A technology decision, a system that needs attention, or an idea worth testing. Start with a few lines about the situation.' } = {}) {
-  return `<section class="contact-band" id="contact"><div class="wrap contact-band-inner"><div><p class="eyebrow">A useful first conversation</p><h2>${escapeHtml(title)}</h2><p>${escapeHtml(text)}</p></div>${button('Tell us about it', '/contact/', { outline: true })}</div></section>`;
+export function contactBand({
+  title = 'What are you trying to solve?',
+  text = 'A technology decision, a system that needs attention, or an idea worth testing. Start with a few lines about the situation.',
+  buttonLabel = 'Tell us about it',
+  buttonHref = '/contact/',
+  eyebrow = 'A useful first conversation',
+} = {}) {
+  return `<section class="contact-band" id="contact"><div class="wrap contact-band-inner"><div><p class="eyebrow">${escapeHtml(eyebrow)}</p><h2>${escapeHtml(title)}</h2><p>${escapeHtml(text)}</p></div>${button(buttonLabel, buttonHref, { outline: true })}</div></section>`;
 }
 
 export function portrait({ large = false } = {}) {
   return `<figure class="portrait${large ? ' portrait--large' : ''}"><img src="/assets/antonio-800.webp" srcset="/assets/antonio-480.webp 480w, /assets/antonio-800.webp 800w" sizes="(max-width: 760px) 90vw, 40vw" width="800" height="1000" loading="lazy" alt="Antonio Pafundi, founder of Pafundi Labs"><figcaption><span>Antonio Pafundi</span><span>Founder · Engineer · Adviser</span></figcaption></figure>`;
 }
 
-export function credibility() {
-  return `<div class="credibility wrap"><p class="eyebrow">Founded on experience in financial technology</p><div><span>Barclays Rates <small>VP Engineering</small></span><span>Man Group <small>Trading technology experience</small></span><span>London · Paris · New York <small>Engineering modernisation</small></span></div></div>`;
+export function credibility(items = [
+  { title: 'Barclays Rates', detail: 'VP Engineering' },
+  { title: 'Man Group', detail: 'Trading technology experience' },
+  { title: 'London · Paris · New York', detail: 'Engineering modernisation' },
+]) {
+  return `<div class="credibility wrap"><p class="eyebrow">Founded on experience in financial technology</p><div>${items.map((item) => `<span>${escapeHtml(item.title)} <small>${escapeHtml(item.detail)}</small></span>`).join('')}</div></div>`;
 }

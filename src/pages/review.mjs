@@ -1,10 +1,11 @@
-import { site, founderOffers, founderProcess, founderExclusions } from '../content/site.mjs';
-import { escapeHtml, sectionHeading, button, textLink, contactBand } from '../components/ui.mjs';
+import { site, founderOffers, founderProcess, founderCredibility, bookingLink } from '../content/site.mjs';
+import { escapeHtml, sectionHeading, button, textLink, contactBand, credibility } from '../components/ui.mjs';
 
 function offerCards() {
   return `<div class="offer-grid">${founderOffers.map((offer) => `
-    <article class="review-card offer-card" id="${offer.id}">
-      <div class="card-top"><span class="index">${offer.number}</span><span class="tag">${escapeHtml(offer.timing)}</span></div>
+    <article class="review-card offer-card${offer.secondary ? ' offer-card--secondary' : ''}" id="${offer.id}">
+      ${(offer.aliases || []).map((alias) => `<span id="${alias}" class="anchor-alias" aria-hidden="true"></span>`).join('')}
+      <span class="index">${offer.number}</span>
       <h3>${escapeHtml(offer.title)}</h3>
       <p class="offer-question">${escapeHtml(offer.question)}</p>
       <p>${escapeHtml(offer.description)}</p>
@@ -12,7 +13,7 @@ function offerCards() {
       <ul class="arrow-list">${offer.deliverables.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
       <div class="review-bottom">
         <p class="price">${escapeHtml(offer.price)}</p>
-        ${button('Book an introductory call', site.bookingUrl)}
+        ${button('Book a call with Antonio', bookingLink(offer.calService))}
       </div>
     </article>`).join('')}</div>`;
 }
@@ -21,38 +22,44 @@ export default {
   path: '/review/',
   title: 'Product & technology advisory for founders',
   description: 'Fixed-scope product and technology assessments for business founders. Launch blueprints, scaling reviews and investment readiness from US$1,500.',
-  render: () => `<section class="wrap page-intro page-intro--offer"><p class="eyebrow">For business founders</p><h1>Independent advice before<br><em>expensive decisions.</em></h1><p class="lead">Decide what to build, change or leave alone before committing budget, hiring or fundraising. You buy a clearer decision — not development hours.</p></section>
-    <section class="wrap offer-section">
-      <p class="eyebrow offer-section-label">Four fixed-scope offers</p>
+  render: () => `<section class="wrap page-intro page-intro--offer">
+      <p class="eyebrow">For business founders</p>
+      <h1>Independent advice before<br><em>expensive decisions.</em></h1>
+      <p class="lead">Make informed product and technology decisions before committing to development, scaling or fundraising. Work directly with Antonio Pafundi on an independent assessment and a clear way forward.</p>
+      <div class="actions">${textLink('Explore services', '#offers')}</div>
+    </section>
+    <div class="credibility-compact">${credibility(founderCredibility)}</div>
+    <section class="wrap offer-section" id="offers">
+      <p class="eyebrow offer-section-label">Our Services</p>
       ${offerCards()}
-      <p class="section-footnote">Scope confirmed before purchase. Payment in full before work begins. Remote delivery. NDA welcome.</p>
+      <p class="section-footnote">Starting prices. Delivery within 10 business days of kickoff and receipt of the required materials.</p>
+    </section>
+    <section class="wrap founder-booking" id="book">
+      <div class="founder-booking-copy">
+        <p class="eyebrow">Founder-led</p>
+        <h2>Work directly with the founder.</h2>
+        <p>Every engagement is personally led and delivered by Antonio Pafundi, bringing senior engineering experience directly to your business decisions.</p>
+        <div class="actions">${button('Book a call with Antonio', bookingLink())}${textLink('Or email Antonio', `mailto:${site.email}?subject=Product%20%26%20technology%20review`)}</div>
+        <p class="confidentiality-note">Confidential discussions. NDA available on request.</p>
+      </div>
+      <div class="founder-booking-proof">
+        <p class="eyebrow">Background</p>
+        <ul class="arrow-list">
+          <li>VP Engineering, Barclays Rates</li>
+          <li>Trading technology experience, Man Group</li>
+        </ul>
+        ${textLink('More about Antonio', '/about/')}
+      </div>
     </section>
     <section class="tinted-section" id="process"><div class="wrap section-space">
-      ${sectionHeading('How delivery works', 'A fixed process. A written outcome.', 'Suggested delivery is within 10 business days of kickoff and receipt of the required materials. The introductory call confirms fit and scope; it is not the paid engagement.')}
+      ${sectionHeading('How delivery works', 'A clear path from first conversation to written outcome.', 'Suggested delivery is within 10 business days of kickoff and receipt of the required materials. The introductory call is complimentary; the engagement begins once scope and terms are agreed.')}
       <ol class="steps steps--four">${founderProcess.map((step) => `<li><span class="index">${step.number}</span><h3>${escapeHtml(step.title)}</h3><p>${escapeHtml(step.text)}</p></li>`).join('')}</ol>
     </div></section>
-    <section class="wrap section-space split-section" id="exclusions">
-      <div>
-        <div class="section-heading">
-          <p class="eyebrow">What this is not</p>
-          <h2>Clear boundaries keep the offer useful.</h2>
-        </div>
-        <p>These assessments help you make a better-informed product or technology decision. They are independent: there is no incentive to sell a subsequent software project.</p>
-        <p class="scope-note">If you need implementation after the assessment, that is scoped and quoted separately.</p>
-      </div>
-      <div>
-        <h3 class="label">Not included</h3>
-        <ul class="arrow-list">${founderExclusions.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
-        <div class="booking-panel">
-          <p class="eyebrow">Next step</p>
-          <h3>Book a short introductory call.</h3>
-          <p>Confirm which offer fits, what will be reviewed, and the materials needed. Then receive the agreement and payment details.</p>
-          <div class="actions">${button('Book an introductory call', site.bookingUrl)}${textLink('Or email Antonio', `mailto:${site.email}?subject=Product%20%26%20technology%20review`)}</div>
-        </div>
-      </div>
-    </section>
     ${contactBand({
-      title: 'Not sure which offer fits?',
-      text: 'Describe the decision in front of you. Antonio will say whether a fixed-scope assessment is useful, or whether a custom advisory engagement makes more sense.',
+      eyebrow: 'A useful first conversation',
+      title: 'Discuss your next product or technology decision.',
+      text: 'Book a 15-minute conversation directly with Antonio to discuss your objectives and the right engagement for your business.',
+      buttonLabel: 'Book an introductory call',
+      buttonHref: bookingLink(),
     })}`,
 };

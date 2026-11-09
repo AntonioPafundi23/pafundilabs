@@ -4,6 +4,7 @@
   .offer-grid { gap: 20px; }
   .steps--four { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
   .engagement-grid--three { grid-template-columns: 1fr; gap: 22px; }
+  .founder-booking { gap: 48px; }
   .hero { gap: 36px; padding-block: 58px; }
   .hero h1 { font-size: 58px; }
   .hero .lead { font-size: 20px; }
@@ -43,7 +44,17 @@
   .service-grid, .review-grid, .offer-grid, .steps, .steps--four { grid-template-columns: 1fr; gap: 30px; }
   .engagement-grid, .engagement-grid--three { grid-template-columns: 1fr; gap: 22px; }
   .offer-card .offer-question { font-size: 17px; }
-  .booking-panel { margin-top: 22px; padding-top: 22px; }
+  .page-intro--offer { padding-block: 22px 10px; }
+  .page-intro--offer .eyebrow { margin-bottom: 14px; }
+  .page-intro--offer h1 { margin-bottom: 12px; font-size: clamp(36px, 8.5vw, 48px); }
+  .page-intro--offer .lead { font-size: 16px; line-height: 1.5; }
+  .credibility-compact .credibility { padding-block: 12px; }
+  .credibility-compact .credibility > .eyebrow { margin-bottom: 8px; }
+  .credibility-compact .credibility > div { gap: 8px; }
+  .credibility-compact .credibility > div > span { font-size: 12px; gap: 8px; }
+  .offer-section { padding-top: 28px; padding-bottom: 32px; }
+  .offer-section-label { margin-bottom: 12px; }
+  .founder-booking { grid-template-columns: 1fr; gap: 34px; padding-block: 36px; }
   .engagement-card { padding: 26px; }
   .service-card .index { margin-bottom: 18px; }
   .service-card h3 { font-size: 28px; }

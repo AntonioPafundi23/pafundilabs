@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile, stat } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { build, publicRoot } from './build.mjs';
-import { site } from '../src/content/site.mjs';
+import { site, founderOffers, bookingLink } from '../src/content/site.mjs';
 
 const pages = await build();
 const documents = new Map();
@@ -47,5 +47,23 @@ assert(!documents.get('/contact/').includes(site.fee), 'Contact should cover ind
 const sitemap = await readFile(resolve(publicRoot, 'sitemap.xml'), 'utf8');
 assert.equal([...sitemap.matchAll(/<loc>/g)].length, 6, 'Sitemap should list the six public pages');
 assert(documents.get('/review/').includes('From US$1,500'), 'Founder offer pricing missing');
-assert(documents.get('/review/').includes('Book an introductory call'), 'Founder booking CTA missing');
+assert(documents.get('/review/').includes('Book a call with Antonio'), 'Founder booking CTA missing');
+assert(documents.get('/review/').includes('Book an introductory call'), 'Final booking CTA missing');
+assert(!documents.get('/review/').includes('What this is not'), 'Defensive exclusions should not appear on /review/');
+assert(!documents.get('/review/').includes('not a junior team'), 'Negative comparison copy should not appear on /review/');
+assert(documents.get('/review/').includes('Production Systems'), 'Founder credibility strip should emphasise production systems');
+assert(documents.get('/review/').includes('Confidential discussions. NDA available on request.'), 'Confidentiality note missing');
+assert(documents.get('/review/').includes(site.bookingUrl), 'Cal.com booking URL missing');
+assert(documents.get('/review/').includes(`${site.bookingServiceParam}=`), 'Cal.com service prefill missing');
+assert(!documents.get('/review/').includes('href="/contact/">Book a call with Antonio'), 'Booking CTAs must not point at contact');
+assert(!documents.get('/review/').includes('href="/contact/">Book an introductory call'), 'Final CTA must not point at contact');
+for (const offer of founderOffers) {
+  assert(documents.get('/review/').includes(`id="${offer.id}"`), `Missing service anchor #${offer.id}`);
+  assert(documents.get('/review/').includes(bookingLink(offer.calService)), `Missing Cal.com prefill for ${offer.id}`);
+  for (const alias of offer.aliases || []) {
+    assert(documents.get('/review/').includes(`id="${alias}"`), `Missing legacy anchor #${alias}`);
+  }
+}
+assert(documents.get('/review/').includes(bookingLink()), 'Generic Cal.com booking link missing');
+assert(documents.get('/review/').includes('href="#offers"'), 'Explore services jump link missing');
 process.stdout.write(`Checked ${pages.length} pages and ${linksChecked} local links/assets. Titles, anchors, navigation, pricing and sitemap passed.\n`);
